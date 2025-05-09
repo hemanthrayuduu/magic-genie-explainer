@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -65,7 +64,7 @@ export function ExplainerForm() {
     <div className="w-full max-w-3xl mx-auto p-4">
       <div className="mb-8 text-center">
         <h2 className="text-4xl font-bold glow-text title-animation appear appear-1">
-          Explain Like I'm 5
+          Explain Like I&apos;m 5
         </h2>
       </div>
       
