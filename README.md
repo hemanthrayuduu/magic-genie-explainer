@@ -4,14 +4,14 @@ A beautiful web application that explains complex text in simple, child-friendly
 
 ## 🧞‍♂️ About
 
-Magic Genie Explainer is a Next.js application that uses Google Gemini 2.50 Flash to transform complex sentences or paragraphs into simple explanations a 5-year-old could understand. Simply paste your text, click the "Explain it like I'm 5" button, and watch the magic happen!
+Magic Genie Explainer is a Next.js application that uses Google Gemini to transform complex sentences or paragraphs into simple explanations a 5-year-old could understand. Simply paste your text, click the "Magic Button," and watch the magic happen!
 
 ## ✨ Features
 
 - Simple, intuitive interface built with Next.js and shadcn/ui
-- Beautiful UI with soft gradient background
+- Beautiful UI with Aladdin Genie-inspired color scheme
 - Mobile-friendly and responsive design
-- Google Gemini 2.50 Flash API integration for intelligent simplification
+- Google Gemini API integration for intelligent simplification
 - Child-friendly explanations that avoid jargon
 - Concise responses under 150 words
 - Helpful analogies when appropriate
@@ -48,16 +48,13 @@ Create a `.env.local` file in the root directory with the following variables:
 GOOGLE_API_KEY=your_google_api_key_here
 
 # Model Configuration
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-2.0-flash
 
 # Optional: Temperature (0.0 to 1.0)
-GEMINI_TEMPERATURE=0.4
+GEMINI_TEMPERATURE=0.6
 
 # Optional: Maximum tokens in response
-GEMINI_MAX_OUTPUT_TOKENS=200
-
-# Optional: Safety settings
-GEMINI_SAFETY_THRESHOLD=MEDIUM
+GEMINI_MAX_OUTPUT_TOKENS=250
 ```
 
 ## 📝 License
