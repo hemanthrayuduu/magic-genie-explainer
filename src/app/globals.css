@@ -76,6 +76,14 @@
   --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
   --sidebar-border: oklch(0.928 0.006 264.531);
   --sidebar-ring: oklch(0.707 0.022 261.325);
+
+  /* Aladdin Genie colors */
+  --genie-dark-blue: #1D80C3;
+  --genie-medium-blue: #4C92CC;
+  --genie-light-blue: #87B9E1;
+  --genie-red: #BE1D29;
+  --genie-yellow: #FEDD7A;
+  --genie-gold: #F3A61E;
 }
 
 .dark {
@@ -118,5 +126,214 @@
   }
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #1D80C3, #4C92CC, #87B9E1);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
   }
 }
+
+/* Custom animations */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes magicSparkle {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: scale(1.5) rotate(45deg); opacity: 0; }
+}
+
+/* Particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle-1 {
+  width: 15px;
+  height: 15px;
+  top: 10%;
+  left: 5%;
+  animation: float 8s ease-in-out infinite;
+  background: linear-gradient(45deg, #FEDD7A, #F3A61E);
+  box-shadow: 0 0 15px rgba(243, 166, 30, 0.5);
+}
+
+.particle-2 {
+  width: 20px;
+  height: 20px;
+  top: 30%;
+  right: 10%;
+  animation: float 12s ease-in-out infinite;
+  background: linear-gradient(45deg, #FEDD7A, #F3A61E);
+  box-shadow: 0 0 20px rgba(243, 166, 30, 0.5);
+}
+
+.particle-3 {
+  width: 12px;
+  height: 12px;
+  bottom: 20%;
+  left: 20%;
+  animation: float 10s ease-in-out infinite;
+  background: linear-gradient(45deg, #FEDD7A, #F3A61E);
+  box-shadow: 0 0 12px rgba(243, 166, 30, 0.4);
+}
+
+.sparkle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(254, 221, 122, 0.9) 0%, rgba(254, 221, 122, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: magicSparkle 2s ease-in-out infinite;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(243, 166, 30, 0.7);
+  color: white;
+}
+
+.genie-emoji {
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+  font-size: 3rem;
+  color: #F3A61E;
+}
+
+.card-glow {
+  box-shadow: 0 5px 25px rgba(29, 128, 195, 0.3);
+  transition: all 0.4s ease;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.card-glow:hover {
+  box-shadow: 0 8px 30px rgba(29, 128, 195, 0.5);
+  transform: translateY(-5px);
+}
+
+.input-card {
+  border-width: 1px;
+  border-color: #87B9E1;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.result-card {
+  border-width: 2px;
+  border-image: linear-gradient(to right, #4C92CC, #1D80C3) 1;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.magic-button {
+  background: linear-gradient(90deg, #F3A61E, #FEDD7A);
+  color: #1D1D1D;
+  font-weight: bold;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(243, 166, 30, 0.4), 0 0 20px rgba(243, 166, 30, 0.2);
+  animation: pulse 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+.magic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.4) 50%, 
+    rgba(255,255,255,0) 100%);
+  animation: shimmer 3s infinite;
+  z-index: 2;
+}
+
+.magic-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, #FEDD7A, #F3A61E);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.magic-button:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(243, 166, 30, 0.6), 0 0 30px rgba(243, 166, 30, 0.3);
+  background: linear-gradient(90deg, #FEDD7A, #F3A61E);
+}
+
+.magic-button:hover::after {
+  opacity: 1;
+}
+
+.magic-button:active {
+  transform: translateY(-2px);
+}
+
+.magic-button:disabled {
+  background: #d1d5db;
+  transform: none;
+  box-shadow: none;
+  animation: none;
+}
+
+.error-card {
+  border-color: #BE1D29;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.error-text {
+  color: #BE1D29;
+}
+
+.title-animation {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.appear {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.appear-1 { animation-delay: 0.1s; }
+.appear-2 { animation-delay: 0.3s; }
+.appear-3 { animation-delay: 0.5s; }

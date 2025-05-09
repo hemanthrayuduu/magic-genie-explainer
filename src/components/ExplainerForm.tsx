@@ -63,7 +63,13 @@ export function ExplainerForm() {
 
   return (
     <div className="w-full max-w-3xl mx-auto p-4">
-      <Card className="mb-8 shadow-lg">
+      <div className="mb-8 text-center">
+        <h2 className="text-4xl font-bold glow-text title-animation appear appear-1">
+          Explain Like I'm 5
+        </h2>
+      </div>
+      
+      <Card className="mb-8 shadow-lg card-glow input-card appear appear-2">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold">
             Magic Genie Explainer
@@ -91,31 +97,35 @@ export function ExplainerForm() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                className="w-full py-6 text-lg font-medium rounded-xl"
-                disabled={isLoading}
-              >
-                {isLoading ? "Thinking..." : "Explain it like I'm 5"}
-              </Button>
+              <div className="relative">
+                <div className="sparkle absolute -top-10 -right-10"></div>
+                <div className="sparkle absolute -bottom-10 -left-10"></div>
+                <Button
+                  type="submit"
+                  className="w-full py-6 text-lg font-bold rounded-xl magic-button"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Casting Spell..." : "Magic Button"}
+                </Button>
+              </div>
             </form>
           </Form>
         </CardContent>
       </Card>
 
       {error && (
-        <Card className="mb-8 border-red-300 bg-red-50 shadow-md">
+        <Card className="mb-8 error-card shadow-md appear appear-3">
           <CardContent className="pt-6">
-            <p className="text-red-500">{error}</p>
+            <p className="error-text">{error}</p>
           </CardContent>
         </Card>
       )}
 
       {explanation && (
-        <Card className="shadow-lg border-2 border-purple-300">
+        <Card className="shadow-lg result-card appear appear-3">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <span className="text-4xl">🧞‍♂️</span>
+              <span className="text-4xl genie-emoji">🧞‍♂️</span>
               <span>Simple Explanation</span>
             </CardTitle>
           </CardHeader>

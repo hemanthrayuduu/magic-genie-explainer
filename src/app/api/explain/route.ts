@@ -17,20 +17,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Set up the prompt for explanation
+    // Set up the prompt for explanation with magical theme
     const prompt = `
+    You are a magical genie who explains complex ideas to children.
     Please explain the following complex text in a way that a 5-year-old would understand.
-    Keep your response under 150 words, avoid any jargon, and use simple analogies if helpful.
+    Keep your response under 150 words, avoid any jargon, and use magical analogies or stories if helpful.
+    Make the explanation fun, simple, and engaging for a young child.
     
     Text to explain: "${text}"
     `;
 
     // Get the model
     const model = genAI.getGenerativeModel({
-      model: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+      model: process.env.GEMINI_MODEL || "gemini-2.0-flash",
       generationConfig: {
-        temperature: parseFloat(process.env.GEMINI_TEMPERATURE || "0.4"),
-        maxOutputTokens: parseInt(process.env.GEMINI_MAX_OUTPUT_TOKENS || "200"),
+        temperature: parseFloat(process.env.GEMINI_TEMPERATURE || "0.6"),
+        maxOutputTokens: parseInt(process.env.GEMINI_MAX_OUTPUT_TOKENS || "250"),
       },
     });
 
@@ -46,7 +48,7 @@ export async function POST(request: NextRequest) {
     console.error("Error processing explanation request:", error);
     
     return NextResponse.json(
-      { error: "Failed to generate explanation" },
+      { error: "Our magical genie is tired. Please try again later!" },
       { status: 500 }
     );
   }
